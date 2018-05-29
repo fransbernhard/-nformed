@@ -36,3 +36,35 @@ const fetchPostsSuccess = (payload) => {
     payload
   }
 }
+
+// ADD CITY
+
+export const addCity = payload => {
+  console.log("PAYLOOOOD: ")
+  console.log(payload)
+  return (dispatch) => {
+    dispatch(fetchRequest())
+    return addCityFetch("http://cities.jonkri.se/", payload).then(([response, json]) => {
+      if(response.status === 200){
+        dispatch(fetchPostsSuccess(json))
+      } else {
+        dispatch(fetchError())
+      }
+    })
+  }
+}
+
+const addCityFetch = (URL, payload) => {
+  return fetch(URL, {
+    method: 'POST',
+    body: JSON.stringify({
+      name: payload.name,
+      population: payload.population
+    }),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+
+  }).then( response => Promise.all([response, response.json()]))
+}

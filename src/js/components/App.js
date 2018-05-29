@@ -10,7 +10,17 @@ import Header from './common/Header.js'
 import Home from './Home.js'
 import Add from './Add.js'
 
+import { connect } from 'react-redux'
+import { bindActionCreators } from "redux"
+import { fetchAll } from "../redux/actions/index"
+
 class App extends Component {
+  constructor(props){
+    super(props)
+    const URL = 'http://cities.jonkri.se/'
+    this.props.fetchAll(URL)
+  }
+
   render(){
     return (
       <div>
@@ -29,5 +39,8 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchAll }, dispatch)
+}
 
-export default App
+export default connect(null, mapDispatchToProps)(App)

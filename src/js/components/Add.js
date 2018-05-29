@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
-import { fetchAll } from "../redux/actions/index"
+import { addCity } from "../redux/actions/index"
 
 import img from '../../img/6.jpg'
 
@@ -11,37 +11,58 @@ class Add extends Component {
 
     this.state = {
       city: "",
-      errorMsg: ""
+      errorMsg: "",
+      population: ""
     }
 
     this.handleChangeCity = this.handleChangeCity.bind(this)
+    this.handleChangePopulation = this.handleChangePopulation.bind(this)
     this.handleAddCity = this.handleAddCity.bind(this)
   }
 
   handleChangeCity(e) {
-    console.log(e.target.value)
 		this.setState({
-			city: e.target.value,
-      errorMsg: ""
+			city: e.target.value
 		})
 	}
 
+  handleChangePopulation(e){
+    this.setState({
+			population: e.target.value
+		})
+  }
+
   handleAddCity(e) {
-		 e.preventDefault()
-		 this.addCity(this.state.city)
+    e.preventDefault()
+
+    let city = this.state.city.toLowerCase()
+    let population = this.state.population
+
+
+    if(/^[a-zA-Z]+$/.test(city)){
+      // this.props.posts.map(post => {
+      //   var postName = post.name.toLowerCase()
+      //   if(postName === val){
+      //     console.log("ALREADY EXISTS")
+      //   } else {
+      //     this.addCiti(val)
+      //   }
+      // })
+      const myObject = {
+        name: city,
+        population: population
+      }
+
+      this.addCiti(myObject)
+    } else {
+      this.setState({
+      	errorMsg: "Error use of invalid characters"
+      })
+    }
 	}
 
-  addCity(city){
-    let val = this.state.city
-    console.log(/^[a-zA-Z]+$/.test(val))
-    if(/^[a-zA-Z]+$/.test(val)){
-      console.log("SUCCESS")
-    } else {
-      console.log("ERROR")
-      this.setState({
-  			errorMsg: "Error use of invalid characters"
-  		})
-    }
+  addCiti(element){
+    this.props.addCity(element)
   }
 
 	render(){
@@ -52,6 +73,7 @@ class Add extends Component {
           <p className="errorMsg">{ this.state.errorMsg ? this.state.errorMsg : null }</p>
           <form className="addForm">
             <input type="text" onChange={this.handleChangeCity} placeholder="City" name="city" />
+            <input type="text" onChange={this.handleChangePopulation} placeholder="Population" name="pop" />
             <button onClick={this.handleAddCity}>Add</button>
           </form>
         </div>
@@ -60,9 +82,12 @@ class Add extends Component {
   }
 }
 
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchAll }, dispatch)
+const mapStateToProps = posts => {
+  return posts
 }
 
-export default connect(null, mapDispatchToProps)(Add)
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ addCity }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Add)
