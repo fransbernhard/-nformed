@@ -1,0 +1,44 @@
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const path = require('path')
+const commonConfig = require('./webpack.common.config')
+
+const plugins = [
+  new webpack.HotModuleReplacementPlugin(),
+  new HtmlWebpackPlugin({
+    template: "./index.html",
+    filename: "./index.html"
+  })
+]
+
+const config = merge(commonConfig, {
+  devtool: 'cheap-module-source-map',
+  module: {
+    rules: [
+      {
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				include: path.join(__dirname, 'src'),
+				use: {
+					loader: "eslint-loader",
+					options: {
+	          failOnWarning: false,
+	          failOnError: false
+					}
+				}
+    	},
+			{
+				test: /\.(sass|scss)$/,
+				use: [
+					'style-loader',
+					'css-loader',
+					'sass-loader'
+				]
+			}
+		]
+  },
+  plugins: plugins
+})
+
+module.exports = config

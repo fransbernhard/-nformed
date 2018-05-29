@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  box-sizing: border-box;
+
+}
+
+*:focus {
+  outline:0 !important;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  background: pink;
+}
+
+.bg {
+  @include fullSizeWH;
+  @include bg;
+  @include flexCenterCenter;
+}
+
+.wrapper {
+  max-width: $wrapper;
+}
+
+.post-ul {
+  width: 400px;
+  overflow: scroll;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.post {
+  @include flexCenterSB;
+}
+
+button {
+  padding: 0.5rem;
+  margin: 0.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: pink;
+  transition: background .3s linear;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+.add {
+  text-align: right;
+}
+
+.add:active {
+  transform: translateY(2px);
+}
