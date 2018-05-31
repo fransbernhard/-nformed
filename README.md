@@ -1,4 +1,4 @@
-### Go to frontend react - development mode
+### Development mode
 ```
 $ cd yourLocalRepositoryRoot
 

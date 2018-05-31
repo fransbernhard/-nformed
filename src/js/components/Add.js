@@ -15,6 +15,7 @@ class Add extends Component {
       population: ""
     }
 
+    // bind metonds
     this.handleChangeCity = this.handleChangeCity.bind(this)
     this.handleChangePopulation = this.handleChangePopulation.bind(this)
     this.handleAddCity = this.handleAddCity.bind(this)
@@ -39,33 +40,35 @@ class Add extends Component {
     let population = Number(this.state.population)
 
     if(/^[a-zA-Z\u00C0-\u00ff]/.test(city)){
+      var cityNotExists = false
 
       this.props.posts.map(post => {
         var postName = post.name.toLowerCase()
         if (postName !== city) {
-          // city = city.charAt(0).toUpperCase() + city.slice(1).toLowerCase()
-          // const myObject = {
-          //   name: city,
-          //   population: population
-          // }
-          // this.addCiti(myObject)
-          console.log("DOES NOT EXIST")
+          cityNotExists = true
         } else {
+          cityNotExists = false
           this.setState({
           	errorMsg: "City already exists"
           })
         }
       })
+
+      if(cityNotExists){
+        city = city.charAt(0).toUpperCase() + city.slice(1).toLowerCase()
+        const myObject = {
+          name: city,
+          population: population
+        }
+        this.props.addCity(myObject)
+        // window.location.href="http://localhost:8081/"
+      }
     } else {
       this.setState({
       	errorMsg: "Error use of invalid characters"
       })
     }
 	}
-
-  addCiti(element){
-    this.props.addCity(element)
-  }
 
 	render(){
 	  return (

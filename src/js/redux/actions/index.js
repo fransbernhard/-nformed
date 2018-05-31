@@ -64,3 +64,28 @@ const addCityFetch = (URL, payload) => {
     }
   }).then( response => Promise.all([response, response.json()]))
 }
+
+// DELETE CITY
+export const deleteCity = payload => {
+  return (dispatch) => {
+    dispatch(fetchRequest())
+    return deleteCityFetch("http://cities.jonkri.se/" + payload)
+      .then(([response, json]) => {
+      if(response.status === 200){
+        dispatch(fetchPostsSuccess(json))
+      } else {
+        dispatch(fetchError())
+      }
+    })
+  }
+}
+
+const deleteCityFetch = (URL) => {
+  return fetch(URL, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  }).then( response => Promise.all([response, response.json()]))
+}

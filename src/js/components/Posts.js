@@ -1,9 +1,22 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-import { connect } from "react-redux"
+import { connect } from 'react-redux'
+import { bindActionCreators } from "redux"
+import { deleteCity } from "../redux/actions/index"
 
 class Posts extends Component {
+	constructor(props){
+		super(props)
+
+		this.deleteCity = this.deleteCity.bind(this)
+	}
+
+	deleteCity(id){
+		console.log(id)
+		this.props.deleteCity(id)
+	}
+
 	render(){
 	  return (
 			<div className="post-ul">
@@ -13,7 +26,7 @@ class Posts extends Component {
 	          this.props.posts.map((post, i) =>
 	  					<li className="post" key={i}>
 	  						<p>{post.name}</p>
-								<button>DETELE</button>
+								<button onClick={() => this.deleteCity(post.id)}>DELETE</button>
 	  					</li>
 	  				)
 	        }
@@ -23,8 +36,12 @@ class Posts extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ deleteCity }, dispatch)
+}
+
 const mapStateToProps = posts => {
   return posts
 }
 
-export default connect(mapStateToProps)(Posts)
+export default connect(mapStateToProps, mapDispatchToProps)(Posts)

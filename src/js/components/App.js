@@ -18,6 +18,7 @@ class App extends Component {
   constructor(props){
     super(props)
     const URL = 'http://cities.jonkri.se/'
+    
     this.props.fetchAll(URL)
   }
 
