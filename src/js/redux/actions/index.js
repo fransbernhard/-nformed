@@ -25,12 +25,12 @@ const fetchError = () => {
   }
 }
 
-const fetchPosts = (URL) => {
+const fetchPosts = URL => {
   return fetch(URL, { method: 'GET'})
     .then( response => Promise.all([response, response.json()]))
 }
 
-const fetchPostsSuccess = (payload) => {
+const fetchPostsSuccess = payload => {
   return {
     type: types.FETCH_POSTS_SUCCESS,
     payload
@@ -38,10 +38,7 @@ const fetchPostsSuccess = (payload) => {
 }
 
 // ADD CITY
-
 export const addCity = payload => {
-  console.log("PAYLOOOOD: ")
-  console.log(payload)
   return (dispatch) => {
     dispatch(fetchRequest())
     return addCityFetch("http://cities.jonkri.se/", payload).then(([response, json]) => {
@@ -64,7 +61,6 @@ const addCityFetch = (URL, payload) => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    },
-
+    }
   }).then( response => Promise.all([response, response.json()]))
 }

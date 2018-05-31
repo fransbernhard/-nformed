@@ -36,24 +36,26 @@ class Add extends Component {
     e.preventDefault()
 
     let city = this.state.city.toLowerCase()
-    let population = this.state.population
+    let population = Number(this.state.population)
 
+    if(/^[a-zA-Z\u00C0-\u00ff]/.test(city)){
 
-    if(/^[a-zA-Z]+$/.test(city)){
-      // this.props.posts.map(post => {
-      //   var postName = post.name.toLowerCase()
-      //   if(postName === val){
-      //     console.log("ALREADY EXISTS")
-      //   } else {
-      //     this.addCiti(val)
-      //   }
-      // })
-      const myObject = {
-        name: city,
-        population: population
-      }
-
-      this.addCiti(myObject)
+      this.props.posts.map(post => {
+        var postName = post.name.toLowerCase()
+        if (postName !== city) {
+          // city = city.charAt(0).toUpperCase() + city.slice(1).toLowerCase()
+          // const myObject = {
+          //   name: city,
+          //   population: population
+          // }
+          // this.addCiti(myObject)
+          console.log("DOES NOT EXIST")
+        } else {
+          this.setState({
+          	errorMsg: "City already exists"
+          })
+        }
+      })
     } else {
       this.setState({
       	errorMsg: "Error use of invalid characters"
