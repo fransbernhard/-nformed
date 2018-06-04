@@ -5,13 +5,15 @@ class VoteList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            list: null
+            list: null,
+            url: 'https://data.riksdagen.se/dokumentlista/?utformat=json&doktyp=votering&sok=' + this.props.query
         }
+
         this.initFetch()
     }
 
     initFetch() {
-        fetch('https://data.riksdagen.se/dokumentlista/?utformat=json&doktyp=votering&sok=sexualbrott').then(function (request) {
+        fetch(this.state.url).then(function (request) {
             return request.json()
         }).then(function (response) {
             console.log(response)
