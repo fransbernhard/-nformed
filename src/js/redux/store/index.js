@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from "../reducers/index"
 import { createLogger } from "redux-logger"
-import thunk from 'redux-thunk'
+// import thunk from 'redux-thunk'
 
-import reduxPromise from "redux-promise"
+// import reduxPromise from "redux-promise"
 
 // import createHistory from 'history/createBrowserHistory'
 // import { routerMiddleware } from 'react-router-redux'
@@ -13,9 +13,9 @@ const initialState = {}
 const enhancers = []
 const logger = createLogger()
 const middleware = [
-  logger,
-  thunk,
-  reduxPromise
+  logger
+  // thunk,
+  // reduxPromise
   // routerMiddleware(history)
 ]
 

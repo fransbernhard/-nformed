@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Posts from './Posts.js'
+import Add from './Add.js'
 import img from '../../img/2.jpg'
 
 class Home extends Component {
@@ -9,7 +10,7 @@ class Home extends Component {
         <div className="wrapper">
           <h1>HOME</h1>
           <Posts />
-          
+          <Add />
         </div>
       </div>
     )

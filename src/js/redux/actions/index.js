@@ -6,7 +6,10 @@ export const fetchAll = () => {
 
 export const deleteCity = (id) => {
   const URL = "http://cities.jonkri.se/" + id
-  return { type: types.DELETE_POST, payload: URL }
+  return {
+    type: types.DELETE_POST,
+    payload: URL
+  }
 }
 
 // ADD CITY
@@ -23,5 +26,8 @@ export const addCity = payload => {
     }
   }
 
-  return { type: types.ADD_POST, payload: postApi}
+  return {
+    type: types.ADD_POST,
+    payload: postApi
+  }
 }

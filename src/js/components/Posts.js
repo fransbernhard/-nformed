@@ -19,7 +19,6 @@ class Posts extends Component {
 	render(){
 	  return (
 			<div className="post-ul">
-				<h1 className="add"><Link to={"/add"}>+</Link></h1>
 	      <ul>
 					{
 	          this.props.posts.map((post, i) =>

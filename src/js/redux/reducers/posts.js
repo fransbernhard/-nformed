@@ -12,7 +12,10 @@ const posts = (state = [], action) => {
             console.log("ERROR IN FETCHALL")
           }
         }).then( json => {
-          store.dispatch({ type: FETCH_POST_SUCCESS, payload: json })
+          store.dispatch({
+            type: FETCH_POST_SUCCESS,
+            payload: json
+          })
         })
       return state
     case FETCH_POST_SUCCESS:
@@ -20,13 +23,17 @@ const posts = (state = [], action) => {
     case DELETE_POST:
       fetch(action.payload, { method: 'DELETE' })
         .then(() => {
-          store.dispatch({ type: FETCH_POSTS })
+          store.dispatch({
+            type: FETCH_POSTS
+          })
         })
       return state
     case ADD_POST:
       fetch('http://cities.jonkri.se/', action.payload)
         .then(() => {
-          store.dispatch({ type: FETCH_POSTS })
+          store.dispatch({
+            type: FETCH_POSTS
+          })
         })
       return state
     default:
