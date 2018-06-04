@@ -9,6 +9,7 @@ import {
 import Header from './common/Header.js'
 import Home from './Home.js'
 import Add from './Add.js'
+import VoteList from './VoteList.js'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
@@ -30,6 +31,7 @@ class App extends Component {
             <Header/>
             <Switch>
               <Route exact path={'/'} component={Home}/>
+              <Route exact path={'/votelist'} component={VoteList}/>
               <Route render={() => { return <Redirect to="/" /> }} />
             </Switch>
           </div>
