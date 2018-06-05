@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import img from '../../img/2.jpg'
 
+
+/*
+Uses a search query to fetch a list of "Voteringar" from data.riksdagen.se
+Then renders an <ul> with the titel for each object retreived in the request
+If the request did not contain any objects, a error message is rendered instead.
+Each <li> has an onClick to be able to send a vote id to an appropriate function or rendering.
+Author: Johan
+*/
 class VoteList extends Component {
     constructor(props) {
         super(props)
@@ -10,9 +18,6 @@ class VoteList extends Component {
             shouldShowA : false,
             vote_id: null
         }
-
-        
-
         this.updateVoteId = this.updateVoteId.bind(this)
     }
 
@@ -24,7 +29,6 @@ class VoteList extends Component {
         fetch(this.state.url).then(function (request) {
             return request.json()
         }).then(function (response) {
-            console.log(response)
             if (response['dokumentlista']['dokument']) {
                 this.setState({list: response['dokumentlista']['dokument'], shouldShowA: true})
             } else {
@@ -36,7 +40,6 @@ class VoteList extends Component {
 
     updateVoteId(id) {
         this.setState({vote_id: id})
-        console.log(id)
     }
     
     render(){
