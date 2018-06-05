@@ -42,6 +42,10 @@ class VoteList extends Component {
         this.setState({vote_id: id})
     }
     
+    // Will return url or use redux for August to handle
+    linkToDetail(id) {
+        
+    }
     render(){
         return (
                 <div className="votelist-container">
