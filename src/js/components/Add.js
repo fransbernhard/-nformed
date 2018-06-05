@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
 import { addCity } from "../redux/actions/index"
 
-import img from '../../img/6.jpg'
-
 class Add extends Component {
   constructor(props){
     super(props)
@@ -62,7 +60,6 @@ class Add extends Component {
           population: population
         }
         this.props.addCity(myObject)
-        // window.location.href="http://localhost:8081/"
       }
     } else {
       this.setState({
@@ -73,16 +70,14 @@ class Add extends Component {
 
 	render(){
 	  return (
-      <div className="bg" style={{backgroundImage: `url(${img})`}}>
-        <div className="wrapper">
-          <h1>Add</h1>
-          <p className="errorMsg">{ this.state.errorMsg ? this.state.errorMsg : null }</p>
-          <form className="addForm">
-            <input type="text" onChange={this.handleChangeCity} placeholder="City" name="city" />
-            <input type="text" onChange={this.handleChangePopulation} placeholder="Population" name="pop" />
-            <button onClick={this.handleAddCity}>Add</button>
-          </form>
-        </div>
+      <div>
+        <h1>Add</h1>
+        <p className="errorMsg">{ this.state.errorMsg ? this.state.errorMsg : null }</p>
+        <form className="addForm">
+          <input type="text" onChange={this.handleChangeCity} placeholder="City" name="city" />
+          <input type="text" onChange={this.handleChangePopulation} placeholder="Population" name="pop" />
+          <button onClick={this.handleAddCity}>Add</button>
+        </form>
       </div>
     )
   }
