@@ -19,8 +19,8 @@ class App extends Component {
   constructor(props){
     super(props)
     const URL = 'http://cities.jonkri.se/'
-    
-    this.props.fetchAll(URL)
+
+    this.props.fetchAll()
   }
 
   render(){
@@ -31,7 +31,6 @@ class App extends Component {
             <Header/>
             <Switch>
               <Route exact path={'/'} component={Home}/>
-              <Route exact path={'/add'} component={Add}/>
               <Route exact path={'/votelist'} component={VoteList}/>
               <Route render={() => { return <Redirect to="/" /> }} />
             </Switch>
@@ -43,7 +42,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchAll }, dispatch)
+  return bindActionCreators({fetchAll}, dispatch)
 }
 
 export default connect(null, mapDispatchToProps)(App)

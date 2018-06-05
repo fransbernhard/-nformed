@@ -13,7 +13,6 @@ class Posts extends Component {
 	}
 
 	deleteCity(id){
-		console.log(id)
 		this.props.deleteCity(id)
 	}
 
@@ -36,9 +35,13 @@ class Posts extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ deleteCity }, dispatch)
-}
+// const mapDispatchToProps = dispatch => {
+//   return bindActionCreators({ deleteCity }, dispatch)
+// }
+
+const mapDispatchToProps = dispatch => ({
+  deleteCity: id => dispatch(deleteCity(id))
+})
 
 const mapStateToProps = posts => {
   return posts

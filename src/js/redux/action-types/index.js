@@ -1,6 +1,4 @@
-export const FETCH_REQUEST = "FETCH_REQUEST"
-export const FETCH_ERROR = "FETCH_ERROR"
-
-export const FETCH_POSTS_SUCCESS = "FETCH_POSTS_SUCCESS"
+export const FETCH_POSTS = "FETCH_POSTS"
 export const ADD_POST = "ADD_POST"
 export const DELETE_POST = "DELETE_POST"
+export const FETCH_POST_SUCCESS = "FETCH_POST_SUCCESS"

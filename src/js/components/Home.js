@@ -9,6 +9,7 @@ class Home extends Component {
         <div className="wrapper">
           <h1>HOME</h1>
           <Posts />
+          
         </div>
       </div>
     )

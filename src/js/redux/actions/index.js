@@ -1,58 +1,17 @@
 import * as types from "../action-types/index"
 
-export const fetchAll = (URL) => {
-  return (dispatch) => {
-    dispatch(fetchRequest())
-    return fetchPosts(URL).then(([response, json]) => {
-      if(response.status === 200){
-        dispatch(fetchPostsSuccess(json))
-      } else {
-        dispatch(fetchError())
-      }
-    })
-  }
+export const fetchAll = () => {
+  return { type: types.FETCH_POSTS }
 }
 
-const fetchRequest = () => {
-  return {
-    type: types.FETCH_REQUEST
-  }
-}
-
-const fetchError = () => {
-  return {
-    type: types.FETCH_ERROR
-  }
-}
-
-const fetchPosts = URL => {
-  return fetch(URL, { method: 'GET'})
-    .then( response => Promise.all([response, response.json()]))
-}
-
-const fetchPostsSuccess = payload => {
-  return {
-    type: types.FETCH_POSTS_SUCCESS,
-    payload
-  }
+export const deleteCity = (id) => {
+  const URL = "http://cities.jonkri.se/" + id
+  return { type: types.DELETE_POST, payload: URL }
 }
 
 // ADD CITY
 export const addCity = payload => {
-  return (dispatch) => {
-    dispatch(fetchRequest())
-    return addCityFetch("http://cities.jonkri.se/", payload).then(([response, json]) => {
-      if(response.status === 200){
-        dispatch(fetchPostsSuccess(json))
-      } else {
-        dispatch(fetchError())
-      }
-    })
-  }
-}
-
-const addCityFetch = (URL, payload) => {
-  return fetch(URL, {
+  const postApi = {
     method: 'POST',
     body: JSON.stringify({
       name: payload.name,
@@ -62,30 +21,7 @@ const addCityFetch = (URL, payload) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  }).then( response => Promise.all([response, response.json()]))
-}
-
-// DELETE CITY
-export const deleteCity = payload => {
-  return (dispatch) => {
-    dispatch(fetchRequest())
-    return deleteCityFetch("http://cities.jonkri.se/" + payload)
-      .then(([response, json]) => {
-      if(response.status === 200){
-        dispatch(fetchPostsSuccess(json))
-      } else {
-        dispatch(fetchError())
-      }
-    })
   }
-}
 
-const deleteCityFetch = (URL) => {
-  return fetch(URL, {
-    method: 'DELETE',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  }).then( response => Promise.all([response, response.json()]))
+  return { type: types.ADD_POST, payload: postApi}
 }
