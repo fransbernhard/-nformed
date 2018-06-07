@@ -1,7 +1,53 @@
+/*
+Style for elements in Riksdagen.js and VoteList.js 
+*/
+
 .votelist-container {
+    margin: 1rem 0rem 0rem 0rem;
     padding: 1rem;
     background-color: white;
     li {
-        margin: 0.6rem;
+        padding: 1rem;
+        @include flexCenterSB();
+        border-bottom: 0.05rem solid grey;
+        p {
+            display: inline;
+            cursor: pointer;
+        }
     }
+    li:hover {
+        background-color: lightblue;
+    }
+}
+
+#riksdagen {
+    max-width: none;
+}
+
+#search-form {
+    background-color: white;
+    padding: 2rem;
+    input {
+        margin: 1rem;
+    }
+    input[type=submit] {
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+}
+
+.common-container {
+    padding: 2rem;
+    background-color: rgba(255,255,255,0.6);
+    input {
+        margin: 1rem;
+    }
+}
+
+.button {
+    margin: 1rem;
+    width: fit-content;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
 }

@@ -8,7 +8,7 @@ class Header extends Component {
         <nav>
           <ul className="menu-ul">
             <li><Link to={'/'}>Home</Link></li>
-            <li><Link to={'votelist'}>Datalist</Link></li>
+            <li><Link to={'riksdagen'}>Riksdagen</Link></li>
           </ul>
         </nav>
       </header>
