@@ -19,7 +19,7 @@ export const putCity = payload => {
   const putApi = {
     method: 'PUT',
     body: JSON.stringify({
-      name: payload.name,
+      name: payload.city,
       population: payload.population
     }),
     headers: {
@@ -43,7 +43,7 @@ export const addCity = payload => {
   const postApi = {
     method: 'POST',
     body: JSON.stringify({
-      name: payload.name,
+      city: payload.city,
       population: payload.population
     }),
     headers: {

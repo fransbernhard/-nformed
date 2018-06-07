@@ -37,7 +37,8 @@ const posts = (state = [], action) => {
         })
       return state
     case PUT_POST:
-      fetch('http://cities.jonkri.se/' + action.payload.url, action.payload.putObject)
+    console.log(action.payload)
+      fetch(action.payload.url, action.payload.putObject)
         .then(() => {
           store.dispatch({
             type: FETCH_POSTS
