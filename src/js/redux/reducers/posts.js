@@ -1,4 +1,4 @@
-import { FETCH_POSTS, DELETE_POST, FETCH_POST_SUCCESS, ADD_POST } from "../action-types/index"
+import { FETCH_POSTS, DELETE_POST, FETCH_POST_SUCCESS, ADD_POST, PUT_POST } from "../action-types/index"
 import store from "../store/index"
 
 const posts = (state = [], action) => {
@@ -30,6 +30,14 @@ const posts = (state = [], action) => {
       return state
     case ADD_POST:
       fetch('http://cities.jonkri.se/', action.payload)
+        .then(() => {
+          store.dispatch({
+            type: FETCH_POSTS
+          })
+        })
+      return state
+    case PUT_POST:
+      fetch('http://cities.jonkri.se/' + action.payload.url, action.payload.putObject)
         .then(() => {
           store.dispatch({
             type: FETCH_POSTS
