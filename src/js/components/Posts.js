@@ -66,27 +66,29 @@ class Posts extends Component {
 
 	render(){
 	  return (
-			<div className="post-ul">
-	      <ul>
-					{
-						this.state.editMode ?
-							<form className="putForm">
-								<input type="text" onChange={this.handleChangeCity} placeholder={this.state.city} name="city" />
-								<input type="text" onChange={this.handleChangePopulation} placeholder={this.state.population} name="pop" />
-								<button onClick={this.handlePutCity}>Update</button>
-							</form>
-							: null
-					}
-					{
-	          this.props.posts.map((post, i) =>
-	  					<li className="post" key={i} onClick={() => this.setId(post)}>
-	  						<p>{post.name}</p>
-								<p>{post.population}</p>
-								<button onClick={() => this.deleteCity(post.id)}>DELETE</button>
-	  					</li>
-	  				)
-	        }
-	      </ul>
+			<div>
+				{
+					this.state.editMode ?
+						<form className="putForm">
+							<input type="text" onChange={this.handleChangeCity} placeholder={this.state.city} name="city" />
+							<input type="text" onChange={this.handleChangePopulation} placeholder={this.state.population} name="pop" />
+							<button onClick={this.handlePutCity}>Update</button>
+						</form>
+						: null
+				}
+				<div className="post-ul">
+		      <ul>
+						{
+		          this.props.posts.map((post, i) =>
+		  					<li className="post" key={i} onClick={() => this.setId(post)}>
+		  						<p>{post.name}</p>
+									<p>{post.population}</p>
+									<button onClick={() => this.deleteCity(post.id)}>DELETE</button>
+		  					</li>
+		  				)
+		        }
+		      </ul>
+				</div>
 			</div>
     )
   }

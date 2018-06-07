@@ -18,7 +18,6 @@ class Add extends Component {
     this.handleChangeCity = this.handleChangeCity.bind(this)
     this.handleChangePopulation = this.handleChangePopulation.bind(this)
     this.handleAddCity = this.handleAddCity.bind(this)
-    this.handlePutCity = this.handlePutCity.bind(this)
   }
 
   handleChangeCity(e) {
@@ -32,16 +31,6 @@ class Add extends Component {
 			population: e.target.value
 		})
   }
-
-  handlePutCity(e) {
-		console.log(e)
-		const myObject = {
-			id: e,
-			city: this.state.city,
-			population: this.state.population
-		}
-		this.props.putCity(myObject)
-	}
 
   handleAddCity(e) {
     e.preventDefault()
@@ -88,11 +77,6 @@ class Add extends Component {
           <input type="text" onChange={this.handleChangeCity} placeholder="City" name="city" />
           <input type="text" onChange={this.handleChangePopulation} placeholder="Population" name="pop" />
           <button onClick={this.handleAddCity}>Add</button>
-          {
-            this.props.editMode
-            ? <button onClick={this.handlePutCity}>Update</button>
-            : null
-          }
         </form>
       </div>
     )

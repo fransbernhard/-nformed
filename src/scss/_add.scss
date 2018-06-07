@@ -1,4 +1,4 @@
-.addForm {
+.addForm, .putForm {
   background: rgba(0,0,0,0.4);
   width: 400px;
   padding: 2rem;
@@ -8,6 +8,10 @@
     padding: 0.6rem;
     border: none;
   }
+}
+
+.putForm {
+  border-radius: 1rem;
 }
 
 .errorMsg {
