@@ -12,6 +12,7 @@ import Home from './Home.js'
 import Add from './Add.js'
 import VoteList from './VoteList.js'
 import Riksdagen from './Riksdagen.js'
+import Vote from './Vote.js'
 import BarChart from './BarChart.js'
 
 import { connect } from 'react-redux'
