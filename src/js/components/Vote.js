@@ -33,7 +33,7 @@ class Vote extends Component {
                 this.setState({title: 'Kunde inte hämta voteringsinfo'})
             }
 
-        },bind(this))
+        }).bind(this)
     }
 
     render(){
