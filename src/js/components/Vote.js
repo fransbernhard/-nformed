@@ -33,17 +33,18 @@ class Vote extends Component {
                 this.setState({title: 'Kunde inte hämta voteringsinfo'})
             }
 
-        }.bind(this))
+        },bind(this))
     }
 
     render(){
         return (
                 <div>
                     {this.state.votes ? (
-                    <h1>{this.state.title}</h1>
-                    <h2>{this.state.debateName}</h2>
-                    <h3>{this.state.date}</h3>
-
+                    <div>
+                        <h1>{this.state.title}</h1>
+                        <h2>{this.state.debateName}</h2>
+                        <h3>{this.state.date}</h3>
+                    </div>
                     /*
                       Rendera BarChart.js här med this.state.votes som input?
                     */
@@ -54,4 +55,5 @@ class Vote extends Component {
                 </div>
         )
     }
+}
 export default Vote
