@@ -9,7 +9,7 @@ class Header extends Component {
           <ul className="menu-ul">
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'riksdagen'}>Riksdagen</Link></li>
-            <li><Link to={'barchart'}>Statistics</Link></li>
+            <li><Link to={'statistics'}>Statistics</Link></li>
           </ul>
         </nav>
       </header>
