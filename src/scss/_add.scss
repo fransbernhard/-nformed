@@ -1,4 +1,4 @@
-.addForm {
+.addForm, .putForm {
   background: rgba(0,0,0,0.4);
   width: 400px;
   padding: 2rem;
@@ -10,9 +10,17 @@
   }
 }
 
+.putForm {
+  border-radius: 1rem;
+}
+
 .errorMsg {
   color: fuchsia;
   font-size: 1rem;
   height: 40px;
   font-family: 'Pacifico', "Butterfly Kids", arial;
+}
+
+.hide {
+  display: none;
 }

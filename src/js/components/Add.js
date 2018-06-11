@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
-import { addCity } from "../redux/actions/index"
+import { addCity, putCity } from "../redux/actions/index"
 
 class Add extends Component {
   constructor(props){
@@ -87,8 +87,9 @@ const mapStateToProps = posts => {
   return posts
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ addCity }, dispatch)
-}
+const mapDispatchToProps = dispatch => ({
+  putCity: id => dispatch(putCity(myObject)),
+  addCity: id => dispatch(addCity(myObject))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Add)
