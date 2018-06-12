@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Posts from './Posts.js'
 import Add from './Add.js'
+import Weather from './Weather.js'
 import img from '../../img/2.jpg'
 
 class Home extends Component {
