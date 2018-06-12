@@ -44,10 +44,11 @@ class Riksdagen extends Component {
 
     handleChange(event) {
         this.setState({
-            query: event.target.value,
+            query: event.currentTarget.value,
             value: event.currentTarget.value
         })
     }
+   
 
     render() {
         return  <div className="bg" id="riksbg" style={{backgroundImage: `url(${img})`}}>
