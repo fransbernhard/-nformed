@@ -42,6 +42,7 @@
     "d3": "^5.4.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
+    "react-background-slideshow": "^1.0.3",
     "react-bar-chart": "^0.1.2",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",

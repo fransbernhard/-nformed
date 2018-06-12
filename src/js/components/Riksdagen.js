@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import img from '../../img/2.jpg'
 import VoteList from './VoteList.js'
+import Slider from 'react-background-slideshow'
+
+import img1 from '../../img/riks/votering-min.jpg'
+import img2 from '../../img/riks/riksdagshuset-min.jpg'
+import img3 from '../../img/riks/voteringsknappar-min.jpg'
+import img4 from '../../img/riks/voteringstavla-min.jpg'
 
 
 /*
@@ -33,23 +39,24 @@ class Riksdagen extends Component {
     }
 
     render() {
-        return  <div className="bg" style={{backgroundImage: `url(${img})`}}>
+        return  <div className="bg" id="riksbg" style={{backgroundImage: `url(${img})`}}>
                     <div className="wrapper" id="riksdagen">
-                        <h1>VoteList</h1>
                         {this.props.match.params.query ? 
                             <div className="common-container">
+                                <h1>Voteringar</h1>
                                 <Link className="button" to={'../riksdagen'}>Ny sökning</Link>
                                 <VoteList query={this.props.match.params.query} />
                         </div>
                         :
                         <div className="common-container"> 
+                            <h1>Sök efter votering</h1>
                             <input type="text" name="query" onChange={this.handleChange} /><br/>
                             <Link className="button" to={`riksdagen/${this.state.query}`}>Sök</Link>
                         </div>}
                     </div>
+                    <Slider images={[img1,img2, img3, img4]} />
                 </div>
     }
-
 }
 
 export default Riksdagen
