@@ -6,12 +6,18 @@ const margin = {top: 20, right: 20, bottom: 30, left: 40}
 class Statistics extends Component {
   render() {
     return (
-      <BarChart ylabel='Quantity'
-              width={900}
-              height={550}
-              margin={margin}
-              data={this.props.resultData}
-              onBarClick={this.handleBarClick} />
+      <div>
+        {
+          this.props.resultData.length != 0
+          ? <BarChart ylabel='Quantity'
+                  width={900}
+                  height={550}
+                  margin={margin}
+                  data={this.props.resultData}
+                  onBarClick={this.handleBarClick} />
+          : null
+        }
+      </div>
     )
   }
 }

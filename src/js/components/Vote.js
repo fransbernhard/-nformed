@@ -47,10 +47,10 @@ class Vote extends Component {
 
     getTotalVotes() {
       const totalVotes = [
-        {vote: 'Ja', amount: this.state.votes.filter(vote => vote.rost == 'Ja').length},
-        {vote: 'Nej', amount: this.state.votes.filter(vote => vote.rost == 'Nej').length},
-        {vote: 'Avstår', amount: this.state.votes.filter(vote => vote.rost == 'Avstår').length},
-        {vote: 'Frånvarande', amount: this.state.votes.filter(vote => vote.rost == 'Frånvarande').length}
+        {text: 'Ja', value: this.state.votes.filter(vote => vote.rost == 'Ja').length},
+        {text: 'Nej', value: this.state.votes.filter(vote => vote.rost == 'Nej').length},
+        {text: 'Avstår', value: this.state.votes.filter(vote => vote.rost == 'Avstår').length},
+        {text: 'Frånvarande', value: this.state.votes.filter(vote => vote.rost == 'Frånvarande').length}
       ]
       return totalVotes
     }
@@ -58,10 +58,10 @@ class Vote extends Component {
     getPartyVotes(party) {
       const members = this.state.votes.filter(vote => vote.parti == party)
       const partyVotes = [
-        {vote: 'Ja', amount: members.filter(vote => vote.rost == 'Ja').length},
-        {vote: 'Nej', amount: members.filter(vote => vote.rost == 'Nej').length},
-        {vote: 'Avstår', amount: members.filter(vote => vote.rost == 'Avstår').length},
-        {vote: 'Frånvarande', amount: members.filter(vote => vote.rost == 'Frånvarande').length}
+        {text: 'Ja', value: members.filter(vote => vote.rost == 'Ja').length},
+        {text: 'Nej', value: members.filter(vote => vote.rost == 'Nej').length},
+        {text: 'Avstår', value: members.filter(vote => vote.rost == 'Avstår').length},
+        {text: 'Frånvarande', value: members.filter(vote => vote.rost == 'Frånvarande').length}
       ]
       return partyVotes
     }
