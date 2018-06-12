@@ -10,6 +10,7 @@ class Header extends Component {
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'riksdagen'}>Riksdagen</Link></li>
             <li><Link to={'barchart'}>Statistics</Link></li>
+            <li><Link to={'vote'}>Votering</Link></li>
           </ul>
         </nav>
       </header>

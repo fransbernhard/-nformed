@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import img from '../../img/2.jpg'
+import { connect } from 'react-redux'
+import { increment, decrease } from "../redux/actions/index"
+import { bindActionCreators } from "redux"
 
 
 /*
@@ -9,6 +12,7 @@ If the request did not contain any objects, a error message is rendered instead.
 Each <li> has an onClick to be able to send a vote id to an appropriate function or rendering.
 Author: Johan
 */
+
 class VoteList extends Component {
     constructor(props) {
         super(props)
@@ -46,6 +50,7 @@ class VoteList extends Component {
     linkToDetail(id) {
         
     }
+
     render(){
         return (
                 <div className="votelist-container">
@@ -63,9 +68,22 @@ class VoteList extends Component {
                         </ul>) 
                     : 
                     (<p>Söker...</p>)}
+                    <input onClick={this.props.increment} type="button" value="UP"></input>
+                    <input onClick={this.props.decrease} type="button" value="DOWN"></input>
+                    <span>{this.props.count.amount},{this.props.count.timesChanged}</span>
                 </div>
         )
     }
 }
 
-export default VoteList
+const mapDispatchToProps = dispatch => ({
+    increment: () => dispatch(increment),
+    decrease: () => dispatch(decrease)
+    
+})
+
+const mapStateToProps = count => {
+    return count
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(VoteList)

@@ -1,4 +1,5 @@
 import * as types from "../action-types/index"
+import store from '../store/index.js'
 
 export const fetchAll = () => {
   return { type: types.FETCH_POSTS }
@@ -57,3 +58,14 @@ export const addCity = payload => {
     payload: postApi
   }
 }
+
+
+export const decrease = {
+    type: 'DECREASE'
+  }
+
+export const increment = {
+    type: 'INCREMENT'
+}
+
+
