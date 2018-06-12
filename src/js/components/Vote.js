@@ -22,7 +22,6 @@ class Vote extends Component {
                     return result.json()
                 }).then(result => {
                     if (result['votering']['dokvotering']) {
-                      console.log('yep');
                       const doc = result.votering.dokument
                       const votes = result.votering.dokvotering.votering
                         this.setState({
@@ -32,24 +31,40 @@ class Vote extends Component {
                           votes: votes
                         })
                     } else {
-                       console.log('nope');
                         this.setState({title: 'Kunde inte hämta voteringsinfo'})
                     }
                 })
               }
 
+              getTotalVotes() {
+                const totalVotes = {
+                  Ja: this.state.votes.filter(vote => vote.rost == 'Ja').length,
+                  Nej: this.state.votes.filter(vote => vote.rost == 'Nej').length,
+                  Avstår: this.state.votes.filter(vote => vote.rost == 'Avstår').length,
+                  Frånvarande: this.state.votes.filter(vote => vote.rost == 'Frånvarande').length
+                }
+                return totalVotes
+              }
+
             render(){
                 return (
                         <div>
-                            <div>
-                                <h1>{this.state.title}</h1>
-                                <h2>{this.state.debateName}</h2>
-                                <h3>{this.state.date}</h3>
-                            </div>
-                            /*
-                              Rendera BarChart.js här med this.state.votes som input?
-                            */
+                          <h1>{this.state.title}</h1>
+                          <h2>{this.state.debateName}</h2>
+                          <h3>{this.state.date}</h3>
+
+                          { this.state.votes ? (
+                            <ul>
+                              {Object.keys(getTotalVotes()).map(key => {
+                                <li>{key + ': ' + getTotalVotes()[key]}</li>
+                              })}
+                            </ul>
+                            )
+                            :
+                            null
+                          }
                         </div>
+
                 )
             }
           }
