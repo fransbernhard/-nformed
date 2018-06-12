@@ -13,9 +13,14 @@ class Vote extends Component {
                 }
             }
 
+<<<<<<< HEAD
+        })
+    }
+=======
             componentDidMount() {
                 this.initFetch()
             }
+>>>>>>> c7c2a06fcff5b3ea7d1a6f543b2c3a3567277a73
 
             initFetch() {
                 fetch(this.state.url).then(result => {

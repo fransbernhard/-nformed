@@ -13,7 +13,7 @@ import Add from './Add.js'
 import VoteList from './VoteList.js'
 import Riksdagen from './Riksdagen.js'
 import Vote from './Vote.js'
-import BarChart from './BarChart.js'
+import Statistics from './Statistics.js'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
@@ -38,7 +38,7 @@ class App extends Component {
               <Route exact path={'/riksdagen'} component={Riksdagen}/>
               <Route exact path={'/vote'} component={Vote}/>
               <Route exact path={'/riksdagen/:query'} component={Riksdagen}/>
-              <Route exact path={'/barchart'} component={BarChart}/>
+              <Route exact path={'/statistics'} component={Statistics}/>
               <Route render={() => { return <Redirect to="/" /> }} />
             </Switch>
           </div>
