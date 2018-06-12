@@ -47,11 +47,6 @@ class VoteList extends Component {
         this.setState({vote_id: id})
 
     }
-    
-    // Will return url or use redux for August to handle
-    linkToDetail(id) {
-        
-    }
 
     render(){
         return (
@@ -70,11 +65,6 @@ class VoteList extends Component {
                         </ul>) 
                     : 
                     (<p>Söker...</p>)}
-                    {/* <input onClick={() => this.props.setCounter(5)} type="button" value="SET"></input> */}
-                    {/* <input onClick={this.props.increment} type="button" value="UP"></input>
-                    <input onClick={this.props.decrease} type="button" value="DOWN"></input>
-                    <span>{this.props.count.amount},{this.props.count.timesChanged}</span> */}
-                    {/* <span>{this.props.count.counter},{this.props.count.timesChanged}</span> */}
                 </div>
         )
     }
