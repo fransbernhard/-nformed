@@ -38,6 +38,7 @@ class App extends Component {
               <Route exact path={'/riksdagen'} component={Riksdagen}/>
               <Route exact path={'/vote'} component={Vote}/>
               <Route exact path={'/riksdagen/:query'} component={Riksdagen}/>
+              <Route exact path={'/votering/'} component={Vote}/>
               <Route exact path={'/statistics'} component={Statistics}/>
               <Route render={() => { return <Redirect to="/" /> }} />
             </Switch>

@@ -6,7 +6,8 @@ import count from './count'
 
 const app = combineReducers({
   posts,
-  count
+  count,
+  vote_id
 })
 
 export default app
