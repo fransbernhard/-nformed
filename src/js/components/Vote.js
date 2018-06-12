@@ -48,6 +48,17 @@ class Vote extends Component {
                 return totalVotes
               }
 
+              getPartyVotes(party) {
+                const members = this.state.votes.filter(vote => vote.parti == party)
+                const partyVotes = {
+                  Ja: members.filter(vote => vote.rost == 'Ja').length,
+                  Nej: members.filter(vote => vote.rost == 'Nej').length,
+                  Avstår: members.filter(vote => vote.rost == 'Avstår').length,
+                  Frånvarande: members.filter(vote => vote.rost == 'Frånvarande').length
+                }
+                return partyVotes
+              }
+
             render(){
                 return (
                       <div className="bg" style={{backgroundImage: `url(${img})`}}>
