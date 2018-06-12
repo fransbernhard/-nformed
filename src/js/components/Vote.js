@@ -22,10 +22,6 @@ class Vote extends Component {
                     return result.json()
                 }).then(result => {
                     if (result['votering']['dokvotering']) {
-<<<<<<< HEAD
-=======
-                      console.log('yep')
->>>>>>> 14ea58bd37bcd3311f921699aa849211ba40a943
                       const doc = result.votering.dokument
                       const votes = result.votering.dokvotering.votering
                         this.setState({
@@ -35,10 +31,6 @@ class Vote extends Component {
                           votes: votes
                         })
                     } else {
-<<<<<<< HEAD
-=======
-                       console.log('nope')
->>>>>>> 14ea58bd37bcd3311f921699aa849211ba40a943
                         this.setState({title: 'Kunde inte hämta voteringsinfo'})
                     }
                 })

@@ -39,7 +39,7 @@ class VoteList extends Component {
             } else {
                 this.setState({list: [{titel: 'Tyvärr gav din sökning inget resultat'}]})
             }
-            
+
         }.bind(this))
     }
 
@@ -47,18 +47,18 @@ class VoteList extends Component {
         this.setState({vote_id: id})
 
     }
-    
+
     // Will return url or use redux for August to handle
     linkToDetail(id) {
-        
+
     }
 
     render(){
         return (
                 <div className="votelist-container">
                     {this.state.list ? (
-                        <ul>    
-                       {this.state.list.map(function (key) {    
+                        <ul>
+                       {this.state.list.map(function (key) {
                             return <li key={key['titel']}>
                             {this.state.shouldShowA ?
                                 <p onClick={() => this.props.setVoteId(key['kall_id'])}><Link to={'/votering'}>{key['titel']}</Link></p>
@@ -67,8 +67,8 @@ class VoteList extends Component {
                             </li>
                         }.bind(this))
                        }
-                        </ul>) 
-                    : 
+                        </ul>)
+                    :
                     (<p>Söker...</p>)}
                     {/* <input onClick={() => this.props.setCounter(5)} type="button" value="SET"></input> */}
                     {/* <input onClick={this.props.increment} type="button" value="UP"></input>
