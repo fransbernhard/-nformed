@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom'
 Uses a search query to fetch a list of "Voteringar" from data.riksdagen.se
 Then renders an <ul> with the titel for each object retreived in the request
 If the request did not contain any objects, a error message is rendered instead.
-Each <li> has an onClick to be able to send a vote id to an appropriate function or rendering.
+Each <li> has an onClick that stores a value with redux and a Link to to render Vote.js.
 Author: Johan
 */
 
@@ -48,11 +48,6 @@ class VoteList extends Component {
 
     }
 
-    // Will return url or use redux for August to handle
-    linkToDetail(id) {
-
-    }
-
     render(){
         return (
                 <div className="votelist-container">
@@ -70,11 +65,6 @@ class VoteList extends Component {
                         </ul>)
                     :
                     (<p>Söker...</p>)}
-                    {/* <input onClick={() => this.props.setCounter(5)} type="button" value="SET"></input> */}
-                    {/* <input onClick={this.props.increment} type="button" value="UP"></input>
-                    <input onClick={this.props.decrease} type="button" value="DOWN"></input>
-                    <span>{this.props.count.amount},{this.props.count.timesChanged}</span> */}
-                    {/* <span>{this.props.count.counter},{this.props.count.timesChanged}</span> */}
                 </div>
         )
     }

@@ -49,7 +49,6 @@ class Riksdagen extends Component {
         })
     }
    
-
     render() {
         return  <div className="bg" id="riksbg" style={{backgroundImage: `url(${img})`}}>
                     <div className="wrapper" id="riksdagen">
