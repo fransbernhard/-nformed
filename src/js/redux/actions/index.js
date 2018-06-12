@@ -68,4 +68,16 @@ export const increment = {
     type: 'INCREMENT'
 }
 
+export const setVoteId = (value) => {
+    return {
+      type: types.SET_VOTE_ID,
+      value
+    }
+}
 
+export const setCounter = (value) => {
+    return {
+      type: types.SET_COUNTER,
+      value
+    }
+}

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import img from '../../img/2.jpg'
 import { connect } from 'react-redux'
-import { increment, decrease } from "../redux/actions/index"
+import { increment, decrease, setCounter, setVoteId } from "../redux/actions/index"
 import { bindActionCreators } from "redux"
+import {Link} from 'react-router-dom'
 
 
 /*
@@ -44,6 +45,7 @@ class VoteList extends Component {
 
     updateVoteId(id) {
         this.setState({vote_id: id})
+
     }
     
     // Will return url or use redux for August to handle
@@ -59,7 +61,7 @@ class VoteList extends Component {
                        {this.state.list.map(function (key) {    
                             return <li key={key['titel']}>
                             {this.state.shouldShowA ?
-                                <p onClick={() => this.updateVoteId(key['kall_id'])}>{key['titel']}</p>
+                                <p onClick={() => this.props.setVoteId(key['kall_id'])}><Link to={'/votering'}>{key['titel']}</Link></p>
                             :
                                 <p>Din sökning gav inget resultat</p>}
                             </li>
@@ -68,22 +70,22 @@ class VoteList extends Component {
                         </ul>) 
                     : 
                     (<p>Söker...</p>)}
-                    <input onClick={this.props.increment} type="button" value="UP"></input>
+                    {/* <input onClick={() => this.props.setCounter(5)} type="button" value="SET"></input> */}
+                    {/* <input onClick={this.props.increment} type="button" value="UP"></input>
                     <input onClick={this.props.decrease} type="button" value="DOWN"></input>
-                    <span>{this.props.count.amount},{this.props.count.timesChanged}</span>
+                    <span>{this.props.count.amount},{this.props.count.timesChanged}</span> */}
+                    {/* <span>{this.props.count.counter},{this.props.count.timesChanged}</span> */}
                 </div>
         )
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    increment: () => dispatch(increment),
-    decrease: () => dispatch(decrease)
-    
+    setVoteId: (value) => dispatch(setVoteId(value))
 })
 
-const mapStateToProps = count => {
-    return count
+const mapStateToProps = vote_id => {
+    return vote_id
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VoteList)

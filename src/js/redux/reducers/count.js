@@ -16,6 +16,11 @@ const count = (state = {amount: 0, timesChanged: 0}, action) => {
             timesChanged: timesChanged++ 
         }
         return newObject
+        case 'SET_COUNTER':
+        var newObject = {
+            counter: action.value
+        }
+        return newObject
         default:
             return state
     }
