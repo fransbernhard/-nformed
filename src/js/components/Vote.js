@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Statistics from './Statistics.js'
 import img from '../../img/2.jpg'
+import Slider from 'react-background-slideshow'
+
+import img1 from '../../img/riks/votering-min.jpg'
+import img2 from '../../img/riks/riksdagshuset-min.jpg'
+import img3 from '../../img/riks/voteringsknappar-min.jpg'
+import img4 from '../../img/riks/voteringstavla-min.jpg'
 
 class Vote extends Component {
   constructor(props) {
@@ -80,7 +86,7 @@ class Vote extends Component {
   render(){
       return (
             <div className="bg" style={{backgroundImage: `url(${img})`}}>
-              <div className="wrapper">
+              <div className="wrapper" id="voteWrapper">
                 <h1>{this.state.title}</h1>
                 <h2>{this.state.debateName}</h2>
                 <h3>{this.state.date}</h3>
@@ -99,6 +105,7 @@ class Vote extends Component {
                   : null
                 }
               </div>
+              <Slider images={[img1,img2, img3, img4]} />
             </div>
 
       )
