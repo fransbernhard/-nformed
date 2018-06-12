@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import img from '../../img/2.jpg'
 
 class Vote extends Component {
@@ -9,8 +10,9 @@ class Vote extends Component {
                     debateName: null,
                     date: null,
                     votes: null,
-                    url: 'https://data.riksdagen.se/votering/' + this.props.id + '/json'
+                    url: 'https://data.riksdagen.se/votering/' + this.props.vote_id.id + '/json'
                 }
+                this.getTotalVotes = this.getTotalVotes.bind(this)
             }
 
             componentDidMount() {
@@ -48,15 +50,16 @@ class Vote extends Component {
 
             render(){
                 return (
-                        <div>
+                      <div className="bg" style={{backgroundImage: `url(${img})`}}>
+                        <div className="wrapper">
                           <h1>{this.state.title}</h1>
                           <h2>{this.state.debateName}</h2>
                           <h3>{this.state.date}</h3>
 
                           { this.state.votes ? (
                             <ul>
-                              {Object.keys(getTotalVotes()).map(key => {
-                                <li>{key + ': ' + getTotalVotes()[key]}</li>
+                              {Object.keys(this.getTotalVotes()).map(key => {
+                                return <li key={key}>{key + ': ' + this.getTotalVotes()[key]}</li>
                               })}
                             </ul>
                             )
@@ -64,8 +67,18 @@ class Vote extends Component {
                             null
                           }
                         </div>
+                      </div>
 
                 )
             }
           }
-export default Vote
+
+const mapDispatchToProps = dispatch => ({
+
+})
+
+const mapStateToProps = vote_id => {
+    return vote_id
+}
+
+export default connect(mapStateToProps, () => ({}))(Vote)
