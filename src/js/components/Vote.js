@@ -12,7 +12,7 @@ class Vote extends Component {
           date: null,
           votes: null,
           parties: null,
-          resultData: null,
+          resultData: [],
           url: 'https://data.riksdagen.se/votering/' + this.props.vote_id.id + '/json'
       }
       this.getTotalVotes = this.getTotalVotes.bind(this)
@@ -46,23 +46,23 @@ class Vote extends Component {
     }
 
     getTotalVotes() {
-      const totalVotes = {
-        Ja: this.state.votes.filter(vote => vote.rost == 'Ja').length,
-        Nej: this.state.votes.filter(vote => vote.rost == 'Nej').length,
-        Avstår: this.state.votes.filter(vote => vote.rost == 'Avstår').length,
-        Frånvarande: this.state.votes.filter(vote => vote.rost == 'Frånvarande').length
-      }
+      const totalVotes = [
+        {vote: 'Ja', amount: this.state.votes.filter(vote => vote.rost == 'Ja').length},
+        {vote: 'Nej', amount: this.state.votes.filter(vote => vote.rost == 'Nej').length},
+        {vote: 'Avstår', amount: this.state.votes.filter(vote => vote.rost == 'Avstår').length},
+        {vote: 'Frånvarande', amount: this.state.votes.filter(vote => vote.rost == 'Frånvarande').length}
+      ]
       return totalVotes
     }
 
     getPartyVotes(party) {
       const members = this.state.votes.filter(vote => vote.parti == party)
-      const partyVotes = {
-        Ja: members.filter(vote => vote.rost == 'Ja').length,
-        Nej: members.filter(vote => vote.rost == 'Nej').length,
-        Avstår: members.filter(vote => vote.rost == 'Avstår').length,
-        Frånvarande: members.filter(vote => vote.rost == 'Frånvarande').length
-      }
+      const partyVotes = [
+        {vote: 'Ja', amount: members.filter(vote => vote.rost == 'Ja').length},
+        {vote: 'Nej', amount: members.filter(vote => vote.rost == 'Nej').length},
+        {vote: 'Avstår', amount: members.filter(vote => vote.rost == 'Avstår').length},
+        {vote: 'Frånvarande', amount: members.filter(vote => vote.rost == 'Frånvarande').length}
+      ]
       return partyVotes
     }
 
@@ -72,8 +72,9 @@ class Vote extends Component {
       this.setState({resultData: totalVotes})
     }
 
-    handleOptionClick(party) {
-      this.setState({resultData: this.getPartyVotes(party)})
+    handleOptionClick(e) {
+      const partyVotes = this.getPartyVotes(e.target.value.split(' ')[2])
+      this.setState({resultData: partyVotes})
     }
 
   render(){
@@ -87,13 +88,13 @@ class Vote extends Component {
                 { this.state.votes
                   ? <div>
                     <div>
-                      <button onClick={() => this.handleVoteClick}>Alla röster</button>
-                      <select>{this.state.parties.map(party => {
-                        return <option onClick={() => this.handleOptionClick(party)}>{'Röster för ' + party}</option>
+                      <button onClick={this.handleVoteClick}>Alla röster</button>
+                      <select onChange={this.handleOptionClick}>{this.state.parties.map((party, i) => {
+                        return <option key={i}>{'Röster för ' + party}</option>
                       })}</select>
                     </div>
 
-                    <Statistics resultData={this.state.resultData}/>
+                    {this.state.resultData.length > 0 ? <Statistics resultData={this.state.resultData}/> : null}
                   </div>
                   : null
                 }
