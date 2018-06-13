@@ -24,7 +24,8 @@ class Vote extends Component {
       this.getTotalVotes = this.getTotalVotes.bind(this)
       this.getPartyVotes = this.getPartyVotes.bind(this)
       this.handleVoteClick = this.handleVoteClick.bind(this)
-      this.handleOptionClick = this.handleOptionClick.bind(this)
+      this.handlePartyOptionClick = this.handlePartyOptionClick.bind(this)
+      this.handleCategoryOptionClick = this.handleCategoryOptionClick.bind(this)
   }
 
   componentDidMount() {
@@ -72,15 +73,29 @@ class Vote extends Component {
       return partyVotes
     }
 
+    getCategoryVotes(category) {
+      const members = this.state.votes.filter(vote => vote.rost == category)
+      const categoryVotes = []
+      this.state.parties.map(party => {
+        categoryVotes.push({text: party, value: members.filter(m => m.parti == party).length})
+      })
+      return categoryVotes
+    }
+
     handleVoteClick(e) {
       e.preventDefault()
       const totalVotes = this.getTotalVotes()
       this.setState({resultData: totalVotes})
     }
 
-    handleOptionClick(e) {
-      const partyVotes = this.getPartyVotes(e.target.value.split(' ')[2])
+    handlePartyOptionClick(e) {
+      const partyVotes = this.getPartyVotes(e.target.value)
       this.setState({resultData: partyVotes})
+    }
+
+    handleCategoryOptionClick(e) {
+      const categoryVotes = this.getCategoryVotes(e.target.value)
+      this.setState({resultData: categoryVotes})
     }
 
   render(){
@@ -95,9 +110,18 @@ class Vote extends Component {
                   ? <div>
                     <div>
                       <button onClick={this.handleVoteClick}>Alla röster</button>
-                      <select onChange={this.handleOptionClick}>{this.state.parties.map((party, i) => {
-                        return <option key={i}>{'Röster för ' + party}</option>
-                      })}</select>
+                      <select onChange={this.handlePartyOptionClick}>
+                      <option selected disabled>Per parti</option>
+                      {this.state.parties.map((party, i) => {
+                        return <option key={i}>{party}</option>
+                      })}
+                      </select>
+                      <select onChange={this.handleCategoryOptionClick}>
+                      <option selected disabled>Per röstkategori</option>
+                      {['Ja', 'Nej', 'Avstår', 'Frånvarande'].map((rost, i) => {
+                        return <option key={i}>{rost}</option>
+                      })}
+                      </select>
                     </div>
 
                     {this.state.resultData.length > 0 ? <Statistics resultData={this.state.resultData}/> : null}
