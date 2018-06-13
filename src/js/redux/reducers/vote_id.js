@@ -3,6 +3,7 @@ import store from "../store/index"
 
 /*
     Reducer for storing a vote id
+    Author: Johan
 */
 const vote_id = (state = {}, action) => {
     switch (action.type) {
