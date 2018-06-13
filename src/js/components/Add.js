@@ -42,7 +42,7 @@ class Add extends Component {
       var cityNotExists = false
 
       this.props.posts.map(post => {
-        var postName = post.name.toLowerCase()
+        var postName = post.name ?  post.name.toLowerCase() : ""
         if (postName !== city) {
           cityNotExists = true
         } else {
@@ -89,7 +89,7 @@ const mapStateToProps = posts => {
 
 const mapDispatchToProps = dispatch => ({
   putCity: id => dispatch(putCity(myObject)),
-  addCity: id => dispatch(addCity(myObject))
+  addCity: myObject => dispatch(addCity(myObject))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Add)

@@ -29,6 +29,8 @@ const posts = (state = [], action) => {
         })
       return state
     case ADD_POST:
+      console.log("ADD POST")
+      console.log(action.payload)
       fetch('http://cities.jonkri.se/', action.payload)
         .then(() => {
           store.dispatch({
@@ -37,7 +39,6 @@ const posts = (state = [], action) => {
         })
       return state
     case PUT_POST:
-    console.log(action.payload)
       fetch(action.payload.url, action.payload.putObject)
         .then(() => {
           store.dispatch({

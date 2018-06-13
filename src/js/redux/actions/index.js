@@ -44,7 +44,7 @@ export const addCity = payload => {
   const postApi = {
     method: 'POST',
     body: JSON.stringify({
-      city: payload.city,
+      name: payload.name,
       population: payload.population
     }),
     headers: {
