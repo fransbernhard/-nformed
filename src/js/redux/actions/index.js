@@ -81,3 +81,14 @@ export const setCounter = (value) => {
       value
     }
 }
+
+export const fetchCityWeather = result => {
+  console.log('weatherResult: ' + result.name + ': ' + result.main.temp + ' °C')
+  const weatherResult = {
+    type: types.FETCH_CITY_WEATHER,
+    city: result.name,
+    temp: result.main.temp
+  }
+
+  return weatherResult
+}

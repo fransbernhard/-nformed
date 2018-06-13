@@ -86,7 +86,7 @@ class Vote extends Component {
   render(){
       return (
             <div className="bg" style={{backgroundImage: `url(${img})`}}>
-              <div className="wrapper" id="voteWrapper">
+              <div className="wrapper boxStyling" id="voteWrapper">
                 <h1>{this.state.title}</h1>
                 <h2>{this.state.debateName}</h2>
                 <h3>{this.state.date}</h3>
