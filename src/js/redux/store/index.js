@@ -1,22 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from "../reducers/index"
 import { createLogger } from "redux-logger"
-// import thunk from 'redux-thunk'
-
-// import reduxPromise from "redux-promise"
-
-// import createHistory from 'history/createBrowserHistory'
-// import { routerMiddleware } from 'react-router-redux'
-// export const history = createHistory()
 
 const initialState = {}
 const enhancers = []
 const logger = createLogger()
 const middleware = [
   logger
-  // thunk,
-  // reduxPromise
-  // routerMiddleware(history)
 ]
 
 if (process.env.NODE_ENV === 'development') {

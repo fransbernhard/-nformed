@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import img from '../../img/2.jpg'
 import { connect } from 'react-redux'
 import { increment, decrease, setCounter, setVoteId } from "../redux/actions/index"
-import { bindActionCreators } from "redux"
 import {Link} from 'react-router-dom'
-
 
 /*
 Uses a search query to fetch a list of "Voteringar" from data.riksdagen.se

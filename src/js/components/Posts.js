@@ -36,13 +36,11 @@ class Posts extends Component {
 
 	handlePutCity(e) {
 		e.preventDefault()
-		console.log(e)
 		const myObject = {
 			id: this.state.id,
 			city: this.state.city,
 			population: this.state.population
 		}
-		console.log(myObject)
 		this.props.putCity(myObject)
 
 		this.setState({

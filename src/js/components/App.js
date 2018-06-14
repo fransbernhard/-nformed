@@ -16,7 +16,6 @@ import Vote from './Vote.js'
 import Statistics from './Statistics.js'
 
 import { connect } from 'react-redux'
-import { bindActionCreators } from "redux"
 import { fetchAll } from "../redux/actions/index"
 
 class App extends Component {
@@ -48,8 +47,8 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({fetchAll}, dispatch)
-}
+const mapDispatchToProps = dispatch => ({
+  fetchAll: () => dispatch(fetchAll())
+})
 
 export default connect(null, mapDispatchToProps)(App)

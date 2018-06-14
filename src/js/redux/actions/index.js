@@ -58,15 +58,6 @@ export const addCity = payload => {
   }
 }
 
-
-export const decrease = {
-    type: 'DECREASE'
-  }
-
-export const increment = {
-    type: 'INCREMENT'
-}
-
 export const setVoteId = (value) => {
     return {
       type: types.SET_VOTE_ID,
@@ -74,15 +65,7 @@ export const setVoteId = (value) => {
     }
 }
 
-export const setCounter = (value) => {
-    return {
-      type: types.SET_COUNTER,
-      value
-    }
-}
-
 export const fetchCityWeather = result => {
-  console.log('weatherResult: ' + result.name + ': ' + result.main.temp + ' °C')
   const weatherResult = {
     type: types.FETCH_CITY_WEATHER,
     city: result.name,
