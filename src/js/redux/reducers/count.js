@@ -7,13 +7,13 @@ const count = (state = {amount: 0, timesChanged: 0}, action) => {
         case 'INCREMENT':
             var newObject = {
                 amount: state.amount + 1,
-                timesChanged: timesChanged++ 
+                timesChanged: timesChanged++
             }
             return newObject
         case 'DECREASE':
         var newObject = {
             amount: state.amount - 1,
-            timesChanged: timesChanged++ 
+            timesChanged: timesChanged++
         }
         return newObject
         case 'SET_COUNTER':
@@ -29,4 +29,3 @@ const count = (state = {amount: 0, timesChanged: 0}, action) => {
 
 
 export default count
-

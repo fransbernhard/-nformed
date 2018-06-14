@@ -36,6 +36,12 @@ body {
   border-radius: 1rem;
 }
 
+.boxStyling {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
 .post {
   @include flexCenterSB;
 }

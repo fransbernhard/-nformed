@@ -2,8 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { bindActionCreators } from "redux"
-import { deleteCity, putCity } from "../redux/actions/index"
+import { deleteCity, putCity, fetchCityWeather } from "../redux/actions/index"
 
 class Posts extends Component {
 	constructor(props){
@@ -62,6 +61,13 @@ class Posts extends Component {
 			city: post.name,
 			population: post.population
 		})
+
+		var apiKey = '4e2f2227d14729cede4209a24927bbd1'
+		var getURL = "http://api.openweathermap.org/data/2.5/weather?q=" + post.name + "&appid=" + apiKey + "&units=metric"
+
+		fetch(getURL)
+			.then(response => response.json())
+			.then(result => { this.props.fetchCityWeather(result) })
 	}
 
 	render(){
@@ -96,7 +102,8 @@ class Posts extends Component {
 
 const mapDispatchToProps = dispatch => ({
   deleteCity: id => dispatch(deleteCity(id)),
-	putCity: myObject => dispatch(putCity(myObject))
+	putCity: myObject => dispatch(putCity(myObject)),
+	fetchCityWeather: result => dispatch(fetchCityWeather(result))
 })
 
 const mapStateToProps = posts => {

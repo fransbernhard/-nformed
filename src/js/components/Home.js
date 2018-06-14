@@ -12,6 +12,7 @@ class Home extends Component {
           <h1>HOME</h1>
           <Posts />
           <Add />
+          <Weather />
         </div>
       </div>
     )
