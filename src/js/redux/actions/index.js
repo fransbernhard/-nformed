@@ -15,7 +15,6 @@ export const deleteCity = (id) => {
 
 // PUT CITY
 export const putCity = payload => {
-  console.log('actions: ' + payload.id)
   const URL = "http://cities.jonkri.se/" + payload.id
   const putApi = {
     method: 'PUT',
